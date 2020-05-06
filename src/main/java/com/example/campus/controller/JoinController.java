@@ -1,0 +1,21 @@
+package com.example.campus.controller;
+
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * <p>
+ * 学生加入社团中间表 前端控制器
+ * </p>
+ *
+ * @author yangwei
+ * @since 2020-05-02
+ */
+@RestController
+@RequestMapping("/campus/join")
+public class JoinController {
+
+}
+
