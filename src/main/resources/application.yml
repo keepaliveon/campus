@@ -5,7 +5,23 @@ spring:
     username: root
     password: 1234
 
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*Mapper.xml
+  type-aliases-package: cn.edu.haue.scholarship.entity
+  type-handlers-package: cn.edu.haue.scholarship.entity
+
+app:
+  jwtSecret: e07e56d6258c
+  jwtExpirationInMs: 604800000
 
 minio:
   accesskey: e07e56d6258c
   secretkey: 26bd27eac5a0
+
+#weixin:
+#  AppID: wxd836f307da5f45dc
+#  AppSecret: eaa8eda36f0a9620e025c19b9472b655
+
+weixin:
+  AppID: wx80e4752b9fffbde3
+  AppSecret: 5cc0784558455036dfbc24d44b24725f

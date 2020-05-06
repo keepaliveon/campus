@@ -4,7 +4,6 @@ import com.example.campus.entity.Admin;
 import com.example.campus.entity.Student;
 import com.example.campus.mapper.AdminMapper;
 import com.example.campus.mapper.StudentMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
