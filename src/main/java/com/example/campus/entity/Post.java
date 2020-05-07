@@ -2,6 +2,8 @@ package com.example.campus.entity;
 
 import java.time.LocalDateTime;
 import java.io.Serializable;
+import java.util.List;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -45,5 +47,7 @@ public class Post implements Serializable {
     @ApiModelProperty(value = "配图")
     private String picUrl;
 
+    @ApiModelProperty(value = "配图")
+    private List<Integer> tags;
 
 }

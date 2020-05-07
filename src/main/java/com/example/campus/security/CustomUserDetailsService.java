@@ -1,8 +1,10 @@
 package com.example.campus.security;
 
 import com.example.campus.entity.Admin;
+import com.example.campus.entity.Community;
 import com.example.campus.entity.Student;
 import com.example.campus.mapper.AdminMapper;
+import com.example.campus.mapper.CommunityMapper;
 import com.example.campus.mapper.StudentMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,19 +20,21 @@ public class CustomUserDetailsService implements UserDetailsService {
     private AdminMapper adminMapper;
 
     @Resource
-    private StudentMapper studentMapper;
+    private CommunityMapper communityMapper;
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        Student student = studentMapper.selectById(s);
-        if (student != null) {
-            return UserPrincipal.create(student);
-        }
+        //先检查是否是管理员账户
         Admin admin = adminMapper.selectById(s);
         if (admin != null) {
             return UserPrincipal.create(admin);
         }
-        throw new UsernameNotFoundException("not found student counsellor or admin : " + s);
+        //再检查是否是社团账户
+        Community community = communityMapper.selectById(s);
+        if (community != null) {
+            return UserPrincipal.create(community);
+        }
+        throw new UsernameNotFoundException("not found community or admin : " + s);
     }
 
 }

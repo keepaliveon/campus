@@ -1,6 +1,7 @@
 package com.example.campus.security;
 
 import com.example.campus.entity.Admin;
+import com.example.campus.entity.Community;
 import com.example.campus.entity.Student;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -30,10 +31,10 @@ public class UserPrincipal implements UserDetails {
         return new UserPrincipal(admin.getUsername(), admin.getPassword(), authorities);
     }
 
-    public static UserPrincipal create(Student student) {
+    public static UserPrincipal create(Community community) {
         Collection<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(student.getRole()));
-        return new UserPrincipal(student.getId(), student.getPassword(), authorities);
+        authorities.add(new SimpleGrantedAuthority(community.getRole()));
+        return new UserPrincipal(community.getId().toString(), community.getPassword(), authorities);
     }
 
     @Override

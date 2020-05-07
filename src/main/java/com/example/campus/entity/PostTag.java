@@ -29,5 +29,8 @@ public class PostTag implements Serializable {
     @ApiModelProperty(value = "帖子ID")
     private String postId;
 
-
+    public PostTag(Integer tagId, String postId) {
+        this.tagId = tagId;
+        this.postId = postId;
+    }
 }

@@ -43,8 +43,4 @@ public class Student implements Serializable {
     @ApiModelProperty(value = "学院")
     private String collage;
 
-    public String getRole() {
-        return RoleName.ROLE_STUDENT.name();
-    }
-
 }

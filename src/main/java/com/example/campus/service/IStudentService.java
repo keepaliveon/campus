@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2020-05-02
  */
 public interface IStudentService extends IService<Student> {
-
+    Student findStudentByOpenId(String openId);
 }

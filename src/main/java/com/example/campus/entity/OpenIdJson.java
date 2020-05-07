@@ -1,7 +1,9 @@
 package com.example.campus.entity;
 
 public class OpenIdJson {
+
     private String openid;
+
     private String session_key;
 
     public String getOpenid() {
