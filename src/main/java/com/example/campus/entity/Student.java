@@ -1,7 +1,9 @@
 package com.example.campus.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.example.campus.common.RoleName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -25,11 +27,12 @@ public class Student implements Serializable {
 
     private static final long serialVersionUID=1L;
 
-    @ApiModelProperty(value = "ID(即学号)")
-    private String id;
+    @ApiModelProperty(value = "微信OpenID")
+    private String openId;
 
-    @ApiModelProperty(value = "密码")
-    private String password;
+    @TableId
+    @ApiModelProperty(value = "ID即学号")
+    private String id;
 
     @ApiModelProperty(value = "姓名")
     private String name;
@@ -42,5 +45,8 @@ public class Student implements Serializable {
 
     @ApiModelProperty(value = "学院")
     private String collage;
+
+    @ApiModelProperty(value = "标签")
+    private List<Tag> tags;
 
 }

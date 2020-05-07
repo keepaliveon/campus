@@ -21,12 +21,14 @@ CREATE TABLE `tag`
 DROP TABLE IF EXISTS `student`;
 CREATE TABLE `student`
 (
-    `id`         char(12)    NOT NULL COMMENT 'ID(即学号)',
-    `password`   varchar(50) NOT NULL COMMENT '密码',
+    `id`         char(12)     NOT NULL COMMENT 'ID即学号',
+    `password`   varchar(50)  NOT NULL COMMENT '密码',
     `name`       varchar(20) COMMENT '姓名',
     `sex`        char(1) COMMENT '性别',
     `speciality` varchar(50) COMMENT '专业',
     `collage`    varchar(50) COMMENT '学院',
+    `open_id`    varchar(255) NOT NULL UNIQUE COMMENT '微信OpenID',
+    `user_avatar`    varchar(255) NOT NULL COMMENT '微信OpenID',
     PRIMARY KEY (`id`)
 ) COMMENT '学生';
 

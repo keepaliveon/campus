@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.io.Serializable;
 import java.util.List;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -26,6 +27,7 @@ public class Post implements Serializable {
 
     private static final long serialVersionUID=1L;
 
+    @TableId
     @ApiModelProperty(value = "ID")
     private String id;
 
@@ -47,7 +49,7 @@ public class Post implements Serializable {
     @ApiModelProperty(value = "配图")
     private String picUrl;
 
-    @ApiModelProperty(value = "配图")
-    private List<Integer> tags;
+    @ApiModelProperty(value = "标签")
+    private List<Tag> tags;
 
 }

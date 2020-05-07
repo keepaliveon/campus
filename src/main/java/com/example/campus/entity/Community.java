@@ -3,6 +3,7 @@ package com.example.campus.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+import java.util.List;
 
 import com.example.campus.common.RoleName;
 import io.swagger.annotations.ApiModel;
@@ -43,5 +44,8 @@ public class Community implements Serializable {
     public String getRole() {
         return RoleName.ROLE_COMMUNITY.name();
     }
+
+    @ApiModelProperty(value = "标签")
+    private List<Tag> tags;
 
 }
