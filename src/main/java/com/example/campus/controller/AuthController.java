@@ -66,7 +66,6 @@ public class AuthController {
                     + this.appSecret + "&js_code="
                     + code
                     + "&grant_type=authorization_code", null);
-            System.out.println(result);
         } catch (Exception e) {
             e.printStackTrace();
         }

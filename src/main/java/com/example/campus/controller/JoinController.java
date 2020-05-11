@@ -6,7 +6,6 @@ import com.example.campus.entity.Join;
 import com.example.campus.entity.Student;
 import com.example.campus.service.IJoinService;
 import com.example.campus.service.IStudentService;
-import com.example.campus.service.impl.JoinServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

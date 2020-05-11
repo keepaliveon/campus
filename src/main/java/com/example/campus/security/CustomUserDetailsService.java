@@ -22,6 +22,9 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Resource
     private CommunityMapper communityMapper;
 
+    @Resource
+    private
+
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         //先检查是否是管理员账户
