@@ -2,10 +2,8 @@ package com.example.campus.security;
 
 import com.example.campus.entity.Admin;
 import com.example.campus.entity.Community;
-import com.example.campus.entity.Student;
 import com.example.campus.mapper.AdminMapper;
 import com.example.campus.mapper.CommunityMapper;
-import com.example.campus.mapper.StudentMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,9 +19,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Resource
     private CommunityMapper communityMapper;
-
-    @Resource
-    private
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
