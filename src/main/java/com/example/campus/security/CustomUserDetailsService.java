@@ -22,8 +22,10 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        System.out.println(s);
         //先检查是否是管理员账户
         Admin admin = adminMapper.selectById(s);
+        System.out.println(admin);
         if (admin != null) {
             return UserPrincipal.create(admin);
         }

@@ -81,19 +81,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js")
                 .permitAll()
-                .antMatchers("/api/auth/**")
-                .permitAll()
-                .antMatchers("/api/user/checkUsernameAvailability", "/api/user/checkEmailAvailability")
-                .permitAll()
-                .antMatchers("/api/polls/**", "/api/users/**")
-                .permitAll()
+                .antMatchers("/api/auth/**").permitAll()
+                .antMatchers("/api/weixin/**").permitAll()
+                .antMatchers("/api/oss/**").permitAll()
                 // swagger 文档
                 .antMatchers("/swagger-ui.html").permitAll()
                 .antMatchers("/swagger-resources/**").permitAll()
                 .antMatchers("/webjars/**").permitAll()
-                .antMatchers("/*/api-docs").permitAll()
-                .anyRequest()
-                .authenticated();
+                .antMatchers("/*/api-docs").permitAll();
+//                .anyRequest()
+//                .authenticated();
 
         // Add our custom JWT security filter
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);

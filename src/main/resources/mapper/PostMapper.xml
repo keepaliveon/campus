@@ -7,10 +7,21 @@
         <id column="id" property="id" />
         <result column="student_id" property="studentId" />
         <result column="group_id" property="groupId" />
-        <result column="community_id" property="communityId" />
         <result column="time" property="time" />
         <result column="content" property="content" />
+        <result column="title" property="title" />
         <result column="pic_url" property="picUrl" />
+        <result column="avatar_url" property="avatarUrl" />
+        <result column="name" property="name" />
     </resultMap>
+    <select id="listByGroup" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select content, time, title,pic_url,student.name,student.avatar_url
+        from post join student on post.student_id = student.id
+        where group_id = #{gid,jdbcType=INTEGER}
+    </select>
+    <select id="listByStudent" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select content, time, title,pic_url,student.name,student.avatar_url
+        from post join student on post.student_id = student.id and student.open_id = #{openId,jdbcType=VARCHAR}
+    </select>
 
 </mapper>

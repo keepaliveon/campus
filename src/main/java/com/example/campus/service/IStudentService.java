@@ -13,4 +13,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IStudentService extends IService<Student> {
     Student findStudentByOpenId(String openId);
+
+    int countPost(String sid);
+
+    int countCommunity(String sid);
 }

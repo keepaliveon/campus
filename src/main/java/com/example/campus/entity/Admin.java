@@ -2,6 +2,7 @@ package com.example.campus.entity;
 
 import java.io.Serializable;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.example.campus.common.RoleName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -26,6 +27,7 @@ public class Admin implements Serializable {
     private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "用户名")
+    @TableId
     private String username;
 
     @ApiModelProperty(value = "密码")

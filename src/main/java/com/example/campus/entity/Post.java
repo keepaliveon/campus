@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.io.Serializable;
 import java.util.List;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -46,10 +47,18 @@ public class Post implements Serializable {
     @ApiModelProperty(value = "发布内容")
     private String content;
 
+    @ApiModelProperty(value = "标题")
+    private String title;
+
     @ApiModelProperty(value = "配图")
     private String picUrl;
 
-    @ApiModelProperty(value = "标签")
-    private List<Tag> tags;
+    @ApiModelProperty(value = "头像")
+    @TableField(exist = false)
+    private String avatarUrl;
+
+    @ApiModelProperty(value = "姓名")
+    @TableField(exist = false)
+    private String name;
 
 }

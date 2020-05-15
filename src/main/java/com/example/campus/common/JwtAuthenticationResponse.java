@@ -1,7 +1,9 @@
 package com.example.campus.common;
 
 public class JwtAuthenticationResponse {
+
     private String accessToken;
+
     private String tokenType = "Bearer";
 
     public JwtAuthenticationResponse(String accessToken) {

@@ -6,6 +6,9 @@ import com.example.campus.service.IJoinService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.util.List;
+
 /**
  * <p>
  * 学生加入社团中间表 服务实现类
@@ -16,5 +19,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class JoinServiceImpl extends ServiceImpl<JoinMapper, Join> implements IJoinService {
+    @Resource
+    private JoinMapper joinMapper;
 
+    @Override
+    public List<Join> listAllByCommunity(String cid) {
+        return joinMapper.listAllByCommunity(cid);
+    }
 }

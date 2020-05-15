@@ -1,4 +1,4 @@
-package com.example.campus.entity;
+package com.example.campus.common;
 
 public class OpenIdJson {
 

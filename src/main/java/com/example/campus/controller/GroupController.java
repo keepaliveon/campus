@@ -38,5 +38,28 @@ public class GroupController {
             return new ResponseEntity<>("创建板块失败", HttpStatus.OK);
         }
     }
+
+    @DeleteMapping("{id}")
+    ResponseEntity<?> delete(@PathVariable Integer id) {
+        if (groupService.removeById(id)) {
+            return new ResponseEntity<>("删除成功", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("删除失败", HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("{id}")
+    ResponseEntity<Group> find(@PathVariable Integer id) {
+        return new ResponseEntity<>(groupService.getById(id), HttpStatus.OK);
+    }
+
+    @PutMapping
+    ResponseEntity<?> update(@RequestBody Group group) {
+        if (groupService.updateById(group)) {
+            return new ResponseEntity<>("更新成功", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("更新失败", HttpStatus.OK);
+        }
+    }
 }
 

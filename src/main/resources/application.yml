@@ -15,6 +15,7 @@ app:
   jwtExpirationInMs: 604800000
 
 minio:
+  url: http://123.57.78.6:9000
   accesskey: e07e56d6258c
   secretkey: 26bd27eac5a0
 

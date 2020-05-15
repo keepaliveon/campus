@@ -26,6 +26,7 @@ public class UserPrincipal implements UserDetails {
 
 
     public static UserPrincipal create(Admin admin) {
+        System.out.println(admin);
         Collection<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority(admin.getRole()));
         return new UserPrincipal(admin.getUsername(), admin.getPassword(), authorities);

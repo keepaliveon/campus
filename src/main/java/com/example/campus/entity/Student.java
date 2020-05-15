@@ -3,6 +3,7 @@ package com.example.campus.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.example.campus.common.RoleName;
 import io.swagger.annotations.ApiModel;
@@ -38,7 +39,7 @@ public class Student implements Serializable {
     private String name;
 
     @ApiModelProperty(value = "性别")
-    private String sex;
+    private Boolean sex;
 
     @ApiModelProperty(value = "专业")
     private String speciality;
@@ -46,7 +47,12 @@ public class Student implements Serializable {
     @ApiModelProperty(value = "学院")
     private String collage;
 
-    @ApiModelProperty(value = "标签")
-    private List<Tag> tags;
+    private String avatarUrl;
+
+    @TableField(exist = false)
+    private Integer postCount;
+
+    @TableField(exist = false)
+    private Integer communityCount;
 
 }

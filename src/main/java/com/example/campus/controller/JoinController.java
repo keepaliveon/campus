@@ -1,6 +1,7 @@
 package com.example.campus.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.example.campus.entity.Join;
 import com.example.campus.entity.Student;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -34,7 +36,7 @@ public class JoinController {
     @PostMapping
     public ResponseEntity<?> create(@RequestBody Map<String, Object> map) {
         String openId = (String) map.get("openId");
-        Integer communityId = (Integer) map.get("communityId");
+        String communityId = (String) map.get("communityId");
         Student student = studentService.findStudentByOpenId(openId);
         Join join = new Join();  //默认待审核
         join.setCommunityId(communityId);
@@ -48,16 +50,25 @@ public class JoinController {
 
     @PutMapping
     public ResponseEntity<?> update(@RequestBody Join join) {
+        Join up = new Join();
+        up.setStudentId(join.getStudentId());
+        up.setCommunityId(join.getCommunityId());
+        up.setState(join.getState());
         UpdateWrapper<Join> updateWrapper = new UpdateWrapper<>();
         Map<String, Object> columnMap = new HashMap<>();
-        columnMap.put("communityId", join.getCommunityId());
+        columnMap.put("community_id", join.getCommunityId());
         columnMap.put("student_id", join.getStudentId());
         updateWrapper.allEq(columnMap);
-        if (joinService.update(join, updateWrapper)) {
+        if (joinService.update(up, updateWrapper)) {
             return new ResponseEntity<>("状态更新成功", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("状态更新失败", HttpStatus.OK);
         }
+    }
+
+    @GetMapping("{cid}")
+    public ResponseEntity<List<Join>> list(@PathVariable String cid) {
+        return new ResponseEntity<>(joinService.listAllByCommunity(cid), HttpStatus.OK);
     }
 }
 

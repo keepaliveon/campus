@@ -5,12 +5,22 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.example.campus.entity.Student">
         <id column="id" property="id" />
-        <result column="password" property="password" />
         <result column="name" property="name" />
         <result column="sex" property="sex" />
         <result column="speciality" property="speciality" />
         <result column="collage" property="collage" />
         <result column="open_id" property="openId" />
+        <result column="avatar_url" property="avatarUrl" />
+        <result column="post_count" property="postCount" />
+        <result column="community_count" property="communityCount" />
     </resultMap>
-
+    <select id="findByOpenId" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from campus.student where open_id = #{openId,jdbcType=VARCHAR}
+    </select>
+    <select id="countCommunityById" parameterType="java.lang.String" resultMap="BaseResultMap" >
+        select count(community_id) as community_count from `join` where student_id = #{sid,jdbcType=VARCHAR} and state = 1
+    </select>
+    <select id="countPostById" parameterType="java.lang.String" resultMap="BaseResultMap" >
+        select count(post.id) as post_count from post where student_id = #{sid,jdbcType=VARCHAR}
+    </select>
 </mapper>

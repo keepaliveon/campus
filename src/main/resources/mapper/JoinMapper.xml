@@ -7,6 +7,26 @@
         <id column="student_id" property="studentId" />
         <result column="community_id" property="communityId" />
         <result column="state" property="state" />
+        <result column="student_name" property="studentName" />
+        <result column="sex" property="sex" />
+        <result column="speciality" property="speciality" />
+        <result column="collage" property="collage" />
+        <result column="community_name" property="communityName" />
+        <result column="avatar_url" property="avatarUrl" />
     </resultMap>
+    <select id="listAllByCommunity" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select j.student_id,j.community_id,
+               c.name as community_name,
+               s.name as student_name,
+               state,
+               sex,
+               speciality,
+               collage,
+               avatar_url
+        from `join` j
+                 left join student s on j.student_id = s.id
+                 left join community c on j.community_id = c.id
+        where j.community_id = #{cid,jdbcType=VARCHAR}
+    </select>
 
 </mapper>

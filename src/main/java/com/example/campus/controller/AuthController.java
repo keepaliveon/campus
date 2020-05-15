@@ -1,7 +1,7 @@
 package com.example.campus.controller;
 
 import com.example.campus.common.JwtAuthenticationResponse;
-import com.example.campus.entity.OpenIdJson;
+import com.example.campus.common.OpenIdJson;
 import com.example.campus.security.CurrentUser;
 import com.example.campus.security.JwtTokenProvider;
 import com.example.campus.security.UserPrincipal;
@@ -15,12 +15,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -39,7 +40,7 @@ public class AuthController {
     private String appSecret;
 
     @ApiOperation(value = "统一登陆")
-    @PostMapping("/signin")
+    @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(String username, String password) {
 
         Authentication authentication = authenticationManager.authenticate(
@@ -50,11 +51,15 @@ public class AuthController {
         return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
     }
 
-    @ApiOperation(value = "获取当前角色身份")
-    @GetMapping("/role")
-    public ResponseEntity<?> role(@ApiIgnore @CurrentUser UserPrincipal userPrincipal) {
-        GrantedAuthority authority = userPrincipal.getAuthorities().iterator().next();
-        return new ResponseEntity<>(authority.getAuthority(), HttpStatus.OK);
+    @GetMapping("/info")
+    @ApiOperation(value = "授权信息")
+    public ResponseEntity<?> info(@ApiIgnore @CurrentUser UserPrincipal userPrincipal) {
+        String username = userPrincipal.getUsername();
+        String role = userPrincipal.getAuthorities().iterator().next().getAuthority();
+        Map<String, String> result = new HashMap<>();
+        result.put("username", username);
+        result.put("role", role);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @GetMapping("wx_auth")

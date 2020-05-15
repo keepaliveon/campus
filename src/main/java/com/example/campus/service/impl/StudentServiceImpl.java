@@ -6,6 +6,8 @@ import com.example.campus.service.IStudentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 /**
  * <p>
  * 学生 服务实现类
@@ -17,4 +19,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> implements IStudentService {
 
+    @Resource
+    private StudentMapper studentMapper;
+
+    @Override
+    public Student findStudentByOpenId(String openId) {
+        return studentMapper.findByOpenId(openId);
+    }
+
+    @Override
+    public int countPost(String sid) {
+        return studentMapper.countPostById(sid).getPostCount();
+    }
+
+    @Override
+    public int countCommunity(String sid) {
+        return studentMapper.countCommunityById(sid).getCommunityCount();
+    }
 }

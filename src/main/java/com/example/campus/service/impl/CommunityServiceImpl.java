@@ -1,9 +1,9 @@
 package com.example.campus.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.campus.entity.Community;
 import com.example.campus.mapper.CommunityMapper;
 import com.example.campus.service.ICommunityService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

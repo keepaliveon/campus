@@ -1,8 +1,10 @@
 package com.example.campus.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.example.campus.common.RoleName;
@@ -29,8 +31,8 @@ public class Community implements Serializable {
     private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "ID")
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "id")
+    private String id;
 
     @ApiModelProperty(value = "社团名称")
     private String name;
@@ -41,11 +43,18 @@ public class Community implements Serializable {
     @ApiModelProperty(value = "介绍")
     private String intro;
 
+    @ApiModelProperty(value = "图片名称")
+    private String imgName;
+
+    @ApiModelProperty(value = "图片URL")
+    private String imgUrl;
+
+    @ApiModelProperty(value = "封面")
+    @TableField(exist = false)
+    private List<String> images = new ArrayList<>();
+
     public String getRole() {
         return RoleName.ROLE_COMMUNITY.name();
     }
-
-    @ApiModelProperty(value = "标签")
-    private List<Tag> tags;
 
 }
